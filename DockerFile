@@ -18,10 +18,10 @@ RUN bun run build
 # Stage 2: Serve the static files using Nginx
 FROM nginx:alpine
 
-# Previous stage se build output copy karein Nginx HTML directory mein
-COPY --from=builder /app/dist /usr/share/nginx/html
+# TanStack Start / Nitro output folder copy karein
+COPY --from=builder /app/.output/public /usr/share/nginx/html
 
-# Custom SPA routing support ke liye Nginx config (agar React Router use kar rahe hain)
+# SPA Routing support ke liye Nginx config
 RUN echo 'server { \
     listen 80; \
     location / { \
