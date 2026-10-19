@@ -8,6 +8,7 @@ COPY . .
 RUN bun run build
 
 FROM nginx:alpine
+# Yahan humne path ko .output/public kar diya hai take Nginx sahi folder se file uthaye
 COPY --from=builder /app/.output/public /usr/share/nginx/html
 
 EXPOSE 80
